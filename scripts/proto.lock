@@ -6510,6 +6510,12 @@
                 "id": 5,
                 "name": "length",
                 "type": "uint64"
+              },
+              {
+                "id": 6,
+                "name": "ssts",
+                "type": "SSTMeta",
+                "is_repeated": true
               }
             ]
           },
