@@ -2600,6 +2600,179 @@ func (m *ClearResponse) GetError() *Error {
 	return nil
 }
 
+type AddPartitionRangeRequest struct {
+	Range *Range `protobuf:"bytes,1,opt,name=range,proto3" json:"range,omitempty"`
+	// the number of seconds this range is valid. If after this duration seconds,
+	// this range is still not removed by `RemoveForcePartitionRange`, tikv will
+	// automically remove it. So the client should ensure to set a big enough value
+	// to avoid auto cleanup. But in general, 1h should be a big enough value.
+	// If its value is 0, tikv will auto adjust it to 3600(1h).
+	Ttl uint64 `protobuf:"varint,2,opt,name=ttl,proto3" json:"ttl,omitempty"`
+}
+
+func (m *AddPartitionRangeRequest) Reset()         { *m = AddPartitionRangeRequest{} }
+func (m *AddPartitionRangeRequest) String() string { return proto.CompactTextString(m) }
+func (*AddPartitionRangeRequest) ProtoMessage()    {}
+func (*AddPartitionRangeRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_4d076b7935cfab6b, []int{36}
+}
+func (m *AddPartitionRangeRequest) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *AddPartitionRangeRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_AddPartitionRangeRequest.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *AddPartitionRangeRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_AddPartitionRangeRequest.Merge(m, src)
+}
+func (m *AddPartitionRangeRequest) XXX_Size() int {
+	return m.Size()
+}
+func (m *AddPartitionRangeRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_AddPartitionRangeRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_AddPartitionRangeRequest proto.InternalMessageInfo
+
+func (m *AddPartitionRangeRequest) GetRange() *Range {
+	if m != nil {
+		return m.Range
+	}
+	return nil
+}
+
+func (m *AddPartitionRangeRequest) GetTtl() uint64 {
+	if m != nil {
+		return m.Ttl
+	}
+	return 0
+}
+
+type AddPartitionRangeResponse struct {
+}
+
+func (m *AddPartitionRangeResponse) Reset()         { *m = AddPartitionRangeResponse{} }
+func (m *AddPartitionRangeResponse) String() string { return proto.CompactTextString(m) }
+func (*AddPartitionRangeResponse) ProtoMessage()    {}
+func (*AddPartitionRangeResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_4d076b7935cfab6b, []int{37}
+}
+func (m *AddPartitionRangeResponse) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *AddPartitionRangeResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_AddPartitionRangeResponse.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *AddPartitionRangeResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_AddPartitionRangeResponse.Merge(m, src)
+}
+func (m *AddPartitionRangeResponse) XXX_Size() int {
+	return m.Size()
+}
+func (m *AddPartitionRangeResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_AddPartitionRangeResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_AddPartitionRangeResponse proto.InternalMessageInfo
+
+type RemovePartitionRangeRequest struct {
+	Range *Range `protobuf:"bytes,1,opt,name=range,proto3" json:"range,omitempty"`
+}
+
+func (m *RemovePartitionRangeRequest) Reset()         { *m = RemovePartitionRangeRequest{} }
+func (m *RemovePartitionRangeRequest) String() string { return proto.CompactTextString(m) }
+func (*RemovePartitionRangeRequest) ProtoMessage()    {}
+func (*RemovePartitionRangeRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_4d076b7935cfab6b, []int{38}
+}
+func (m *RemovePartitionRangeRequest) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *RemovePartitionRangeRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_RemovePartitionRangeRequest.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *RemovePartitionRangeRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_RemovePartitionRangeRequest.Merge(m, src)
+}
+func (m *RemovePartitionRangeRequest) XXX_Size() int {
+	return m.Size()
+}
+func (m *RemovePartitionRangeRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_RemovePartitionRangeRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_RemovePartitionRangeRequest proto.InternalMessageInfo
+
+func (m *RemovePartitionRangeRequest) GetRange() *Range {
+	if m != nil {
+		return m.Range
+	}
+	return nil
+}
+
+type RemovePartitionRangeResponse struct {
+}
+
+func (m *RemovePartitionRangeResponse) Reset()         { *m = RemovePartitionRangeResponse{} }
+func (m *RemovePartitionRangeResponse) String() string { return proto.CompactTextString(m) }
+func (*RemovePartitionRangeResponse) ProtoMessage()    {}
+func (*RemovePartitionRangeResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_4d076b7935cfab6b, []int{39}
+}
+func (m *RemovePartitionRangeResponse) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *RemovePartitionRangeResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_RemovePartitionRangeResponse.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *RemovePartitionRangeResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_RemovePartitionRangeResponse.Merge(m, src)
+}
+func (m *RemovePartitionRangeResponse) XXX_Size() int {
+	return m.Size()
+}
+func (m *RemovePartitionRangeResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_RemovePartitionRangeResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_RemovePartitionRangeResponse proto.InternalMessageInfo
+
 func init() {
 	proto.RegisterEnum("import_sstpb.SwitchMode", SwitchMode_name, SwitchMode_value)
 	proto.RegisterEnum("import_sstpb.DownloadRequestType", DownloadRequestType_name, DownloadRequestType_value)
@@ -2641,6 +2814,10 @@ func init() {
 	proto.RegisterType((*ApplyResponse)(nil), "import_sstpb.ApplyResponse")
 	proto.RegisterType((*ClearRequest)(nil), "import_sstpb.ClearRequest")
 	proto.RegisterType((*ClearResponse)(nil), "import_sstpb.ClearResponse")
+	proto.RegisterType((*AddPartitionRangeRequest)(nil), "import_sstpb.AddPartitionRangeRequest")
+	proto.RegisterType((*AddPartitionRangeResponse)(nil), "import_sstpb.AddPartitionRangeResponse")
+	proto.RegisterType((*RemovePartitionRangeRequest)(nil), "import_sstpb.RemovePartitionRangeRequest")
+	proto.RegisterType((*RemovePartitionRangeResponse)(nil), "import_sstpb.RemovePartitionRangeResponse")
 }
 
 func init() { proto.RegisterFile("import_sstpb.proto", fileDescriptor_4d076b7935cfab6b) }
@@ -2828,6 +3005,14 @@ type ImportSSTClient interface {
 	ClearFiles(ctx context.Context, in *ClearRequest, opts ...grpc.CallOption) (*ClearResponse, error)
 	// Suspend ingest for data listeners don't support catching import data.
 	SuspendImportRPC(ctx context.Context, in *SuspendImportRPCRequest, opts ...grpc.CallOption) (*SuspendImportRPCResponse, error)
+	// AddForcePartitionRange marks a range in tikv that any compact overlaps with this range
+	// should generates SST files partitioned at region boundaries as well as this range boundary.
+	// TiKV will also try to do manual compact(if needed) after setting this range to eusure
+	// any incoming SST under this range can be ingested into the bottom level if there is no real kv overlap.
+	AddForcePartitionRange(ctx context.Context, in *AddPartitionRangeRequest, opts ...grpc.CallOption) (*AddPartitionRangeResponse, error)
+	// Remove the force partition range after the task is finished. If this function is not called,
+	// tikv will cleanup the range after TTL to ensure it can be cleaned eventually.
+	RemoveForcePartitionRange(ctx context.Context, in *RemovePartitionRangeRequest, opts ...grpc.CallOption) (*RemovePartitionRangeResponse, error)
 }
 
 type importSSTClient struct {
@@ -3062,6 +3247,24 @@ func (c *importSSTClient) SuspendImportRPC(ctx context.Context, in *SuspendImpor
 	return out, nil
 }
 
+func (c *importSSTClient) AddForcePartitionRange(ctx context.Context, in *AddPartitionRangeRequest, opts ...grpc.CallOption) (*AddPartitionRangeResponse, error) {
+	out := new(AddPartitionRangeResponse)
+	err := c.cc.Invoke(ctx, "/import_sstpb.ImportSST/AddForcePartitionRange", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *importSSTClient) RemoveForcePartitionRange(ctx context.Context, in *RemovePartitionRangeRequest, opts ...grpc.CallOption) (*RemovePartitionRangeResponse, error) {
+	out := new(RemovePartitionRangeResponse)
+	err := c.cc.Invoke(ctx, "/import_sstpb.ImportSST/RemoveForcePartitionRange", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // ImportSSTServer is the server API for ImportSST service.
 type ImportSSTServer interface {
 	// Switch to normal/import mode.
@@ -3091,6 +3294,14 @@ type ImportSSTServer interface {
 	ClearFiles(context.Context, *ClearRequest) (*ClearResponse, error)
 	// Suspend ingest for data listeners don't support catching import data.
 	SuspendImportRPC(context.Context, *SuspendImportRPCRequest) (*SuspendImportRPCResponse, error)
+	// AddForcePartitionRange marks a range in tikv that any compact overlaps with this range
+	// should generates SST files partitioned at region boundaries as well as this range boundary.
+	// TiKV will also try to do manual compact(if needed) after setting this range to eusure
+	// any incoming SST under this range can be ingested into the bottom level if there is no real kv overlap.
+	AddForcePartitionRange(context.Context, *AddPartitionRangeRequest) (*AddPartitionRangeResponse, error)
+	// Remove the force partition range after the task is finished. If this function is not called,
+	// tikv will cleanup the range after TTL to ensure it can be cleaned eventually.
+	RemoveForcePartitionRange(context.Context, *RemovePartitionRangeRequest) (*RemovePartitionRangeResponse, error)
 }
 
 // UnimplementedImportSSTServer can be embedded to have forward compatible implementations.
@@ -3138,6 +3349,12 @@ func (*UnimplementedImportSSTServer) ClearFiles(ctx context.Context, req *ClearR
 }
 func (*UnimplementedImportSSTServer) SuspendImportRPC(ctx context.Context, req *SuspendImportRPCRequest) (*SuspendImportRPCResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SuspendImportRPC not implemented")
+}
+func (*UnimplementedImportSSTServer) AddForcePartitionRange(ctx context.Context, req *AddPartitionRangeRequest) (*AddPartitionRangeResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AddForcePartitionRange not implemented")
+}
+func (*UnimplementedImportSSTServer) RemoveForcePartitionRange(ctx context.Context, req *RemovePartitionRangeRequest) (*RemovePartitionRangeResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RemoveForcePartitionRange not implemented")
 }
 
 func RegisterImportSSTServer(s *grpc.Server, srv ImportSSTServer) {
@@ -3423,6 +3640,42 @@ func _ImportSST_SuspendImportRPC_Handler(srv interface{}, ctx context.Context, d
 	return interceptor(ctx, in, info, handler)
 }
 
+func _ImportSST_AddForcePartitionRange_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(AddPartitionRangeRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ImportSSTServer).AddForcePartitionRange(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/import_sstpb.ImportSST/AddForcePartitionRange",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ImportSSTServer).AddForcePartitionRange(ctx, req.(*AddPartitionRangeRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ImportSST_RemoveForcePartitionRange_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RemovePartitionRangeRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ImportSSTServer).RemoveForcePartitionRange(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/import_sstpb.ImportSST/RemoveForcePartitionRange",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ImportSSTServer).RemoveForcePartitionRange(ctx, req.(*RemovePartitionRangeRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _ImportSST_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "import_sstpb.ImportSST",
 	HandlerType: (*ImportSSTServer)(nil),
@@ -3466,6 +3719,14 @@ var _ImportSST_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "SuspendImportRPC",
 			Handler:    _ImportSST_SuspendImportRPC_Handler,
+		},
+		{
+			MethodName: "AddForcePartitionRange",
+			Handler:    _ImportSST_AddForcePartitionRange_Handler,
+		},
+		{
+			MethodName: "RemoveForcePartitionRange",
+			Handler:    _ImportSST_RemoveForcePartitionRange_Handler,
 		},
 	},
 	Streams: []grpc.StreamDesc{
@@ -5542,6 +5803,127 @@ func (m *ClearResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	return len(dAtA) - i, nil
 }
 
+func (m *AddPartitionRangeRequest) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *AddPartitionRangeRequest) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *AddPartitionRangeRequest) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.Ttl != 0 {
+		i = encodeVarintImportSstpb(dAtA, i, uint64(m.Ttl))
+		i--
+		dAtA[i] = 0x10
+	}
+	if m.Range != nil {
+		{
+			size, err := m.Range.MarshalToSizedBuffer(dAtA[:i])
+			if err != nil {
+				return 0, err
+			}
+			i -= size
+			i = encodeVarintImportSstpb(dAtA, i, uint64(size))
+		}
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *AddPartitionRangeResponse) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *AddPartitionRangeResponse) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *AddPartitionRangeResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	return len(dAtA) - i, nil
+}
+
+func (m *RemovePartitionRangeRequest) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *RemovePartitionRangeRequest) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *RemovePartitionRangeRequest) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.Range != nil {
+		{
+			size, err := m.Range.MarshalToSizedBuffer(dAtA[:i])
+			if err != nil {
+				return 0, err
+			}
+			i -= size
+			i = encodeVarintImportSstpb(dAtA, i, uint64(size))
+		}
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *RemovePartitionRangeResponse) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *RemovePartitionRangeResponse) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *RemovePartitionRangeResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	return len(dAtA) - i, nil
+}
+
 func encodeVarintImportSstpb(dAtA []byte, offset int, v uint64) int {
 	offset -= sovImportSstpb(v)
 	base := offset
@@ -6460,6 +6842,53 @@ func (m *ClearResponse) Size() (n int) {
 	if m.XXX_unrecognized != nil {
 		n += len(m.XXX_unrecognized)
 	}
+	return n
+}
+
+func (m *AddPartitionRangeRequest) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	if m.Range != nil {
+		l = m.Range.Size()
+		n += 1 + l + sovImportSstpb(uint64(l))
+	}
+	if m.Ttl != 0 {
+		n += 1 + sovImportSstpb(uint64(m.Ttl))
+	}
+	return n
+}
+
+func (m *AddPartitionRangeResponse) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	return n
+}
+
+func (m *RemovePartitionRangeRequest) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	if m.Range != nil {
+		l = m.Range.Size()
+		n += 1 + l + sovImportSstpb(uint64(l))
+	}
+	return n
+}
+
+func (m *RemovePartitionRangeResponse) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
 	return n
 }
 
@@ -11601,6 +12030,297 @@ func (m *ClearResponse) Unmarshal(dAtA []byte) error {
 				return io.ErrUnexpectedEOF
 			}
 			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *AddPartitionRangeRequest) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowImportSstpb
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: AddPartitionRangeRequest: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: AddPartitionRangeRequest: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Range", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowImportSstpb
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthImportSstpb
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthImportSstpb
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			if m.Range == nil {
+				m.Range = &Range{}
+			}
+			if err := m.Range.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		case 2:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Ttl", wireType)
+			}
+			m.Ttl = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowImportSstpb
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.Ttl |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		default:
+			iNdEx = preIndex
+			skippy, err := skipImportSstpb(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthImportSstpb
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *AddPartitionRangeResponse) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowImportSstpb
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: AddPartitionRangeResponse: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: AddPartitionRangeResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		default:
+			iNdEx = preIndex
+			skippy, err := skipImportSstpb(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthImportSstpb
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *RemovePartitionRangeRequest) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowImportSstpb
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: RemovePartitionRangeRequest: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: RemovePartitionRangeRequest: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Range", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowImportSstpb
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthImportSstpb
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthImportSstpb
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			if m.Range == nil {
+				m.Range = &Range{}
+			}
+			if err := m.Range.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipImportSstpb(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthImportSstpb
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *RemovePartitionRangeResponse) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowImportSstpb
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: RemovePartitionRangeResponse: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: RemovePartitionRangeResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		default:
+			iNdEx = preIndex
+			skippy, err := skipImportSstpb(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthImportSstpb
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
 			iNdEx += skippy
 		}
 	}
