@@ -270,6 +270,10 @@
               {
                 "name": "M2",
                 "integer": 2
+              },
+              {
+                "name": "M3",
+                "integer": 3
               }
             ]
           }
@@ -2171,6 +2175,11 @@
                 "name": "ingested_sst_paths",
                 "type": "string",
                 "is_repeated": true
+              },
+              {
+                "id": 8,
+                "name": "replicated",
+                "type": "bool"
               }
             ]
           }

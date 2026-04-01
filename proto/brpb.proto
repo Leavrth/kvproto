@@ -980,6 +980,8 @@ enum MigrationVersion {
   M1 = 1;
   // Added `ingested_sst_paths`.
   M2 = 2;
+  // Added `replicated`.
+  M3 = 3;
 }
 
 message Migration {
@@ -994,4 +996,6 @@ message Migration {
   // The ingested SSTs.
   // It is mutable during restoring, hence a reference.
   repeated string ingested_sst_paths = 7;
+  // True if cross-region replication is enabled and all files have been successfully synchronized.
+  bool replicated = 8;
 }
